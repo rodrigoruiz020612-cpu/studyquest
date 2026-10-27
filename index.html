@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>StudyQuest – El saber es poder</title>
+<style>
+:root{--bg:#f6f5ff;--card:#fff;--tx:#1d1b3a;--mu:#6b6890;--pr:#5b4bdb;--prt:#fff;--ok:#1f9d63;--okb:#dff6ea;--ko:#d6455d;--kob:#fde4e8;--bd:#e3e0f5;--gold:#f5a623;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14132a;--card:#1e1d3a;--tx:#ecebff;--mu:#9d9bc4;--pr:#8b7dff;--prt:#14132a;--ok:#4fd69a;--okb:#16382b;--ko:#ff7d92;--kob:#3d1a24;--bd:#32305a}}
+*{box-sizing:inherit}html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:920px;margin:0 auto;padding:14px}
+body{background-image:linear-gradient(rgba(120,110,220,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(120,110,220,.09) 1px,transparent 1px);background-size:28px 28px}
+.hero{position:relative;overflow:hidden;text-align:center;color:#fff;padding:36px 16px 28px;margin-bottom:14px;border-radius:24px;background:linear-gradient(135deg,#3f2fb8,#7b4fd6 60%,#c04fb8)}
+.hero h1{margin:4px 0;font:700 clamp(34px,8vw,54px) Georgia,serif;letter-spacing:.5px}
+.hero .sl{font:italic clamp(20px,5vw,26px) Georgia,serif;color:#ffe08a;margin:2px 0 10px}
+.hero p{margin:0 auto 16px;max-width:480px;opacity:.92}
+.hero .btn{background:#ffe08a;color:#3a2a00;font-size:17px;padding:13px 28px;border-radius:30px}
+.chips{margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}.chips b{background:rgba(255,255,255,.18);border-radius:20px;padding:4px 12px;font-size:13px;font-weight:600}
+.hero i{position:absolute;font:normal 34px Georgia,serif;opacity:.22;animation:fl 9s ease-in-out infinite alternate}
+.deco span:nth-child(3n){color:var(--gold)}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:18px 0}.feat div{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px;text-align:center}.feat .e{font-size:32px}
+footer{text-align:center;color:var(--mu);font:italic 15px Georgia,serif;padding:14px 0 26px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.card{border-top:4px solid var(--pr)}
+#v{max-width:680px;margin:0 auto}
+header{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:12px 14px}
+.av{font-size:34px}.hd{flex:1}.hd b{font-size:15px}.bar{height:8px;background:var(--bd);border-radius:9px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--pr);transition:width .4s}
+.pts{font-weight:700;font-size:20px;color:var(--gold);white-space:nowrap}
+nav{display:flex;gap:6px;margin:12px 0}
+nav button{flex:1;padding:10px 4px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;font:inherit;font-weight:600;cursor:pointer}
+nav button.on{background:var(--pr);color:var(--prt);border-color:var(--pr)}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px}
+h2{margin:0 0 8px;font-size:18px}.mu{color:var(--mu);font-size:14px}
+.btn{background:var(--pr);color:var(--prt);border:0;border-radius:12px;padding:11px 16px;font:inherit;font-weight:600;cursor:pointer}
+.btn.sec{background:transparent;color:var(--pr);border:1px solid var(--pr)}.btn:disabled{opacity:.4;cursor:default}
+.opt{display:block;width:100%;text-align:left;margin:8px 0;padding:13px;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--pr)}.opt.ok{background:var(--okb);border-color:var(--ok)}.opt.ko{background:var(--kob);border-color:var(--ko)}.opt.hide{visibility:hidden}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.row.sp{justify-content:space-between}
+.wc{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}.wc button{padding:7px 10px;border-radius:20px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:14px;cursor:pointer}.wc button:disabled{opacity:.35}
+.hint{background:var(--bg);border-left:4px solid var(--gold);padding:8px 10px;border-radius:8px;margin:8px 0;font-size:14px}
+.fb{padding:10px;border-radius:10px;margin:8px 0;font-weight:600}.fb.ok{background:var(--okb);color:var(--ok)}.fb.ko{background:var(--kob);color:var(--ko)}
+.item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--bd)}.item:last-child{border:0}.item .e{font-size:30px}.item .i{flex:1}
+input,select{width:100%;padding:10px;margin:4px 0 8px;border:1px solid var(--bd);border-radius:10px;background:var(--bg);color:var(--tx);font:inherit}
+label{font-size:13px;color:var(--mu)}
+.big{text-align:center;font-size:44px}.sum{display:flex;gap:8px;justify-content:center;margin:12px 0;flex-wrap:wrap}.sum div{background:var(--bg);padding:10px 14px;border-radius:12px;text-align:center}.sum b{display:block;font-size:22px}
+.pop{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 16px);transform:translateX(-50%);background:var(--pr);color:var(--prt);padding:10px 18px;border-radius:20px;font-weight:700;z-index:9;animation:f 1.6s forwards}
+@keyframes f{0%{opacity:0;top:0}15%,75%{opacity:1}100%{opacity:0}}
+.deco{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.deco span{position:absolute;font:34px Georgia,serif;color:var(--pr);opacity:.1;animation:fl 12s ease-in-out infinite alternate}@keyframes fl{to{transform:translateY(-26px) rotate(14deg)}}main{position:relative;z-index:1}
+.fm{background:var(--bg);border:2px dashed var(--pr);border-radius:12px;padding:10px;text-align:center;font:italic 19px Georgia,serif;margin:8px 0 12px}
+</style></head><body><div class="deco"><span style="left:6%;top:12%">π</span><span style="left:82%;top:8%;animation-delay:-3s">∑</span><span style="left:70%;top:30%;animation-delay:-6s">√x</span><span style="left:10%;top:42%;animation-delay:-2s">x²</span><span style="left:88%;top:52%;animation-delay:-8s">∞</span><span style="left:25%;top:66%;animation-delay:-5s">±</span><span style="left:75%;top:74%;animation-delay:-1s">÷</span><span style="left:8%;top:86%;animation-delay:-7s">∫</span><span style="left:48%;top:92%;animation-delay:-4s">(a+b)²</span><span style="left:52%;top:3%;animation-delay:-9s">θ</span><span style="left:93%;top:20%;animation-delay:-2s">Δ</span><span style="left:3%;top:28%;animation-delay:-5s">≠</span><span style="left:60%;top:58%;animation-delay:-7s">a²−b²</span><span style="left:35%;top:18%;animation-delay:-3s">%</span><span style="left:90%;top:88%;animation-delay:-6s">∠</span><span style="left:18%;top:96%;animation-delay:-1s">Σ</span><span style="left:40%;top:50%;animation-delay:-8s">½</span></div><main>
+<section class="hero"><i style="left:5%;top:10%">π</i><i style="right:6%;top:14%;animation-delay:-3s">(a+b)²</i><i style="left:10%;bottom:12%;animation-delay:-5s">√</i><i style="right:10%;bottom:10%;animation-delay:-2s">x²</i><i style="left:42%;top:4%;animation-delay:-6s">∞</i>
+<div style="font-size:46px">🎓</div><h1>StudyQuest</h1><div class="sl">“El saber es poder”</div>
+<p>Álgebra que se juega: resuelve ejercicios, gana puntos, canjea comodines y sube de nivel.</p>
+<button class="btn" onclick="tab='s';render();document.getElementById('app').scrollIntoView({behavior:'smooth'})">▶ Empezar a estudiar</button>
+<div class="chips"><b>6 temas</b><b>3 niveles</b><b>72 preguntas</b></div></section>
+<header><div class="av" id="av"></div><div class="hd"><b id="lvl"></b><div class="bar"><i id="xp"></i></div></div><div class="pts" id="pts"></div></header>
+<nav id="nav"></nav><div id="app"></div><div id="v"></div>
+<section class="feat"><div><div class="e">📚</div><b>Aprende</b><div class="mu">Preguntas por tema y dificultad con pistas</div></div><div><div class="e">⭐</div><b>Gana puntos</b><div class="mu">Rachas y bonus por tus aciertos</div></div><div><div class="e">🛍️</div><b>Canjea</b><div class="mu">Comodines y avatares en la tienda</div></div></section>
+<footer>✦ El saber es poder ✦<br>StudyQuest · Hecho para estudiar álgebra</footer></main>
+<script>
+const DEF=[
+["Suma algebraica",1,"3x + 2x =","5x",["6x","5x²","5"],"Suma solo los coeficientes; la letra no cambia."],
+["Suma algebraica",1,"7a − 3a =","4a",["10a","4","4a²"],"Resta los coeficientes: 7 − 3."],
+["Suma algebraica",1,"(2x + 5) + (3x + 1) =","5x + 6",["6x + 5","5x² + 6","5x + 4"],"Agrupa términos semejantes."],
+["Suma algebraica",1,"9m − 9m =","0",["18m","m","9"],"Un término menos él mismo."],
+["Suma algebraica",2,"(4x² + 3x) + (2x² − 5x) =","6x² − 2x",["6x² + 8x","8x² − 2x","6x⁴ − 2x"],"x² con x²; x con x."],
+["Suma algebraica",2,"(5a − 3b) − (2a − 4b) =","3a + b",["3a − 7b","7a + b","3a − b"],"El signo menos cambia todos los signos del paréntesis."],
+["Suma algebraica",2,"3xy + 2x − xy + 5x =","2xy + 7x",["4xy + 7x","2xy + 3x","9xy"],"xy solo se une con xy."],
+["Suma algebraica",2,"(x² − 4x + 1) + (3x² + 2x − 6) =","4x² − 2x − 5",["4x² + 6x − 5","4x² − 2x + 7","3x² − 2x − 5"],"Ordena por potencias de x."],
+["Suma algebraica",3,"Resta (3x³ − 2x² + 5) de (7x³ + x² − 4):","4x³ + 3x² − 9",["4x³ − x² − 9","4x³ + 3x² + 1","10x³ − x² + 1"],"El minuendo va primero; cambia los signos del sustraendo."],
+["Suma algebraica",3,"2(x − 3) − 3(x − 4) + x =","6",["x + 6","0","−6"],"Distribuye y reduce; las x se cancelan."],
+["Suma algebraica",3,"5ab² − 3a²b + 2ab² + a²b =","7ab² − 2a²b",["7ab² − 4a²b","10ab² − 2a²b","7a²b² − 2a²b"],"ab² y a²b NO son semejantes."],
+["Suma algebraica",3,"Si A = 2x² − 3x y B = −x² + 4x + 1, ¿A − B?","3x² − 7x − 1",["x² + x − 1","3x² + x + 1","3x² − 7x + 1"],"Cambia todos los signos de B antes de sumar."],
+["Multiplicación algebraica",1,"3x · 4x =","12x²",["12x","7x","7x²"],"Multiplica coeficientes y suma exponentes."],
+["Multiplicación algebraica",1,"(−3)(−4x) =","12x",["−12x","7x","−7x"],"Menos por menos da más."],
+["Multiplicación algebraica",1,"x · x³ =","x⁴",["x³","x⁷","2x³"],"x es x¹; suma exponentes."],
+["Multiplicación algebraica",1,"2(x + 3) =","2x + 6",["2x + 3","x + 6","2x + 5"],"El 2 multiplica a ambos términos."],
+["Multiplicación algebraica",2,"(x + 2)(x + 3) =","x² + 5x + 6",["x² + 6","x² + 5x + 5","x² + 6x + 5"],"Multiplica cada término del primero por cada uno del segundo."],
+["Multiplicación algebraica",2,"(a − 4)(a + 4) =","a² − 16",["a² + 16","a² − 8a − 16","a² − 8"],"Es una diferencia de cuadrados."],
+["Multiplicación algebraica",2,"3x(2x² − 5x + 1) =","6x³ − 15x² + 3x",["6x² − 15x + 3","6x³ − 15x² + 1","6x³ − 5x² + 3x"],"Multiplica 3x por cada término."],
+["Multiplicación algebraica",2,"(2x − 1)(x + 5) =","2x² + 9x − 5",["2x² + 11x − 5","2x² + 9x + 5","2x² − 9x − 5"],"Los términos medios: 10x − x."],
+["Multiplicación algebraica",3,"(x + 3)² =","x² + 6x + 9",["x² + 9","x² + 3x + 9","x² + 6x + 6"],"Cuadrado de un binomio: a² + 2ab + b²."],
+["Multiplicación algebraica",3,"(2x − 3y)² =","4x² − 12xy + 9y²",["4x² − 9y²","4x² − 6xy + 9y²","4x² + 12xy + 9y²"],"El término medio es 2·(2x)·(−3y)."],
+["Multiplicación algebraica",3,"(x − 1)(x² + x + 1) =","x³ − 1",["x³ + 1","x³ − 2x − 1","x³ + 2x² − 1"],"Casi todo se cancela."],
+["Multiplicación algebraica",3,"(3a²b)(−2ab³) =","−6a³b⁴",["−6a²b³","6a³b⁴","−5a³b⁴"],"Signos, coeficientes y luego cada letra por separado."],
+["Potencias de potencias",1,"(x²)³ =","x⁶",["x⁵","x⁸","x²"],"Multiplica los exponentes."],
+["Potencias de potencias",1,"(a³)² =","a⁶",["a⁵","a⁹","a"],"3 × 2."],
+["Potencias de potencias",1,"(5²)² =","5⁴",["5⁶","5²","10⁴"],"La base se queda igual."],
+["Potencias de potencias",1,"(y⁵)² =","y¹⁰",["y⁷","y²⁵","y³"],"No sumes: multiplica."],
+["Potencias de potencias",2,"(x³)⁴ · x² =","x¹⁴",["x²⁴","x⁹","x¹⁸"],"Primero la potencia (x¹²), luego suma exponentes."],
+["Potencias de potencias",2,"(2x³)² =","4x⁶",["2x⁶","4x⁵","4x⁹"],"El exponente afecta al 2 y a la x."],
+["Potencias de potencias",2,"(a²b³)³ =","a⁶b⁹",["a⁵b⁶","a⁶b⁶","a⁸b⁹"],"Multiplica cada exponente por 3."],
+["Potencias de potencias",2,"(x⁵)² ÷ x⁴ =","x⁶",["x⁴","x¹⁴","x³"],"En la división se restan los exponentes."],
+["Potencias de potencias",3,"((x²)³)² =","x¹²",["x⁷","x¹⁰","x⁹"],"2 × 3 × 2."],
+["Potencias de potencias",3,"(−2a²b)³ =","−8a⁶b³",["8a⁶b³","−6a⁶b³","−8a⁵b³"],"(−2)³ es negativo."],
+["Potencias de potencias",3,"(x²)ⁿ · (xⁿ)² =","x⁴ⁿ",["x²ⁿ","x²ⁿ⁺²","x⁴ⁿ⁺²"],"Cada una vale x²ⁿ."],
+["Potencias de potencias",3,"(2x²)³ · (x³)² =","8x¹²",["8x¹¹","6x¹²","2x¹²"],"2³ = 8; x⁶ · x⁶."],
+["Binomio al cuadrado",1,"(x + 1)² =","x² + 2x + 1",["x² + 1","x² + x + 1","2x + 1"],"a² + 2ab + b²: no olvides el doble producto."],
+["Binomio al cuadrado",1,"(a − 2)² =","a² − 4a + 4",["a² − 4","a² + 4a + 4","a² − 2a + 4"],"El término del medio lleva el signo del binomio."],
+["Binomio al cuadrado",1,"(m + 5)² =","m² + 10m + 25",["m² + 25","m² + 5m + 25","m² + 10m + 10"],"2 · m · 5."],
+["Binomio al cuadrado",1,"(y − 3)² =","y² − 6y + 9",["y² − 9","y² − 3y + 9","y² + 6y + 9"],"El último término siempre es positivo."],
+["Binomio al cuadrado",2,"(2x + 3)² =","4x² + 12x + 9",["4x² + 6x + 9","2x² + 12x + 9","4x² + 9"],"(2x)² + 2·(2x)·3 + 3²."],
+["Binomio al cuadrado",2,"(3a − 4)² =","9a² − 24a + 16",["9a² − 12a + 16","9a² + 16","3a² − 24a + 16"],"2 · 3a · 4 = 24a."],
+["Binomio al cuadrado",2,"(x + y)² − (x − y)² =","4xy",["2xy","0","2x² + 2y²"],"Desarrolla los dos y resta."],
+["Binomio al cuadrado",2,"(5x − 2y)² =","25x² − 20xy + 4y²",["25x² − 10xy + 4y²","25x² − 4y²","5x² − 20xy + 2y²"],"2 · 5x · 2y = 20xy."],
+["Binomio al cuadrado",3,"(x² + 3)² =","x⁴ + 6x² + 9",["x⁴ + 9","x⁴ + 3x² + 9","x⁴ + 6x + 9"],"(x²)² = x⁴ y el doble producto es 6x²."],
+["Binomio al cuadrado",3,"(½x − 3)² =","¼x² − 3x + 9",["¼x² − 9","½x² − 3x + 9","¼x² − 6x + 9"],"2 · ½x · 3 = 3x."],
+["Binomio al cuadrado",3,"Si x + 1/x = 3, ¿cuánto vale x² + 1/x²?","7",["9","11","5"],"Eleva al cuadrado: el doble producto vale 2."],
+["Binomio al cuadrado",3,"Completa el trinomio cuadrado perfecto: x² + 10x + __","25",["10","20","100"],"Es (mitad de 10)²."],
+["Binomios conjugados",1,"(x + 2)(x − 2) =","x² − 4",["x² + 4","x² − 2","x² − 4x − 4"],"Suma por diferencia: a² − b²."],
+["Binomios conjugados",1,"(a + 5)(a − 5) =","a² − 25",["a² + 25","a² − 10a","a² − 5"],"Cuadrado del primero menos cuadrado del segundo."],
+["Binomios conjugados",1,"(m − 1)(m + 1) =","m² − 1",["m² + 1","m² − 2m","m² − m"],"1² = 1."],
+["Binomios conjugados",1,"(y + 7)(y − 7) =","y² − 49",["y² + 49","y² − 14","y² − 7"],"7² = 49."],
+["Binomios conjugados",2,"(2x + 3)(2x − 3) =","4x² − 9",["4x² + 9","2x² − 9","4x² − 6x"],"(2x)² − 3²."],
+["Binomios conjugados",2,"(3a − b)(3a + b) =","9a² − b²",["9a² + b²","3a² − b²","9a² − 6ab − b²"],"No hay término del medio."],
+["Binomios conjugados",2,"(x² + 4)(x² − 4) =","x⁴ − 16",["x⁴ + 16","x² − 16","x⁴ − 8x²"],"(x²)² = x⁴."],
+["Binomios conjugados",2,"(5m + 2n)(5m − 2n) =","25m² − 4n²",["25m² + 4n²","5m² − 2n²","25m² − 2n²"],"Eleva al cuadrado cada término completo."],
+["Binomios conjugados",3,"(x − 2)(x + 2)(x² + 4) =","x⁴ − 16",["x⁴ + 16","x⁴ − 4","x⁴ − 8"],"Aplica el patrón dos veces."],
+["Binomios conjugados",3,"Calcula 101 × 99 usando binomios conjugados:","9999",["10000","9990","9901"],"(100 + 1)(100 − 1)."],
+["Binomios conjugados",3,"(a + b + c)(a + b − c) =","a² + 2ab + b² − c²",["a² + b² − c²","a² + 2ab + b² + c²","a² − b² − c²"],"Toma (a + b) como un solo término."],
+["Binomios conjugados",3,"(√3 + √2)(√3 − √2) =","1",["5","√6","0"],"3 − 2."],
+["Valor numérico",1,"Si x = 3, ¿cuánto vale 2x + 1?","7",["6","5","9"],"Reemplaza x por 3: 2·3 + 1."],
+["Valor numérico",1,"Si a = −2, ¿cuánto vale a²?","4",["−4","−2","2"],"(−2)(−2)."],
+["Valor numérico",1,"Si m = 5, ¿cuánto vale 3m − 4?","11",["19","9","14"],"3·5 = 15, luego resta 4."],
+["Valor numérico",1,"Si x = 4 y y = 2, ¿cuánto vale x·y?","8",["6","2","42"],"Multiplica los dos números."],
+["Valor numérico",2,"Si x = −3, ¿cuánto vale x² + 2x − 1?","2",["14","−4","−16"],"9 + (−6) − 1."],
+["Valor numérico",2,"Si a = 2 y b = −1, ¿cuánto vale 3a² − 2ab + b²?","17",["7","15","9"],"12 + 4 + 1."],
+["Valor numérico",2,"Si x = ½, ¿cuánto vale 4x² + 2x?","2",["1","3","4"],"4·¼ + 1."],
+["Valor numérico",2,"Si x = −2, ¿cuánto vale (x − 1)³?","−27",["27","−9","−6"],"(−3)³ es negativo."],
+["Valor numérico",3,"Si x = 2 y y = −3, ¿cuánto vale (x − y)² − x² − y²?","12",["−12","38","13"],"25 − 4 − 9."],
+["Valor numérico",3,"Si a = −1 y b = 3, ¿cuánto vale (a + b)² − (a − b)²?","−12",["12","−20","8"],"4 − 16."],
+["Valor numérico",3,"Si x = 5, ¿cuánto vale (x² − 9)/(x − 3)?","8",["2","16","10"],"Factoriza el numerador: (x+3)(x−3)."],
+["Valor numérico",3,"Si x + y = 5 y xy = 6, ¿cuánto vale x² + y²?","13",["11","19","31"],"Usa (x + y)² = x² + 2xy + y²."]];
+const SHOP=[
+{id:"fifty",e:"✂️",n:"50/50",d:"Elimina 2 opciones incorrectas",p:30,w:1},
+{id:"hint",e:"💡",n:"Pista",d:"Muestra una ayuda de la pregunta",p:20,w:1},
+{id:"skip",e:"⏭️",n:"Saltar",d:"Salta una pregunta sin penalización",p:25,w:1},
+{id:"shield",e:"🛡️",n:"Escudo",d:"Protege tu racha si fallas",p:35,w:1},
+{id:"🦊",e:"🦊",n:"Avatar Zorro",d:"Cosmético",p:40},{id:"🤖",e:"🤖",n:"Avatar Robot",d:"Cosmético",p:80},
+{id:"🦉",e:"🦉",n:"Avatar Búho sabio",d:"Cosmético",p:120},{id:"🐉",e:"🐉",n:"Avatar Dragón",d:"Cosmético",p:200},{id:"👑",e:"👑",n:"Corona de campeón",d:"Cosmético",p:300}];
+const NAMES=["Novato","Aprendiz","Estudiante","Erudito","Maestro","Leyenda"];
+let S={pts:0,tot:0,inv:{fifty:1,hint:1,skip:0,shield:0},own:["🐣"],av:"🐣",custom:[],prog:{}};
+try{const r=JSON.parse(localStorage.getItem("sq1"));if(r)S=Object.assign(S,r)}catch(e){}
+const save=()=>{try{localStorage.setItem("sq1",JSON.stringify(S))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));
+const sh=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const all=()=>DEF.map(d=>({t:d[0],l:d[1],q:d[2],a:d[3],w:d[4],h:d[5]})).concat(S.custom.map(c=>Object.assign({l:1},c)));
+const LV=["Fácil","Medio","Difícil"],MU=[1,1.5,2];
+const FM={"Suma algebraica":"Suma términos semejantes: 3x + 2x = 5x","Multiplicación algebraica":"(a + b)(c + d) = ac + ad + bc + bd","Potencias de potencias":"(aᵐ)ⁿ = aᵐ·ⁿ","Binomio al cuadrado":"(a ± b)² = a² ± 2ab + b²","Binomios conjugados":"(a + b)(a − b) = a² − b²","Valor numérico":"Sustituye la letra por su número y opera"};
+const open=(t,l)=>l==1||t=="Todas"||(S.prog[t+"|"+(l-1)]||0)>=.6;
+let tab="s",ses=null,topic="Suma algebraica",lv=1;
+function pop(t){const d=document.createElement("div");d.className="pop";d.textContent=t;document.body.appendChild(d);setTimeout(()=>d.remove(),1700)}
+function add(n){S.pts+=n;if(n>0)S.tot+=n;save()}
+function head(){const l=Math.min(5,Math.floor(S.tot/150));document.getElementById("av").textContent=S.av;
+document.getElementById("lvl").textContent="Nivel "+(l+1)+" · "+NAMES[l];
+document.getElementById("xp").style.width=(S.tot%150)/150*100+"%";
+document.getElementById("pts").textContent="⭐ "+S.pts;
+document.getElementById("nav").innerHTML=[["s","📚 Estudiar"],["t","🛍️ Tienda"],["m","✏️ Preguntas"]].map(x=>`<button class="${tab==x[0]?"on":""}" onclick="tab='${x[0]}';render()">${x[1]}</button>`).join("")}
+function render(){head();const v=document.getElementById("v");v.innerHTML=tab=="s"?(ses?quiz():home()):tab=="t"?shop():mine()}
+function home(){const ts=["Todas",...new Set(all().map(q=>q.t))];if(!open(topic,lv))lv=1;const bp=S.prog[topic+"|"+lv];
+return `<div class="card"><h2>🧮 ¡A estudiar!</h2><p class="mu">Cada acierto da puntos, las rachas dan bonus y al final ganas extra según tu precisión. Gástalos en comodines y objetos.</p>
+<label>Tema</label><select onchange="topic=this.value;render()">${ts.map(t=>`<option ${t==topic?"selected":""}>${esc(t)}</option>`).join("")}</select>
+${FM[topic]?`<div class="fm">${FM[topic]}</div>`:""}<label>Dificultad</label><div class="row" style="margin:6px 0 10px">${[1,2,3].map(l=>`<button class="btn ${lv==l?"":"sec"}" ${open(topic,l)?"":"disabled"} onclick="lv=${l};render()">${open(topic,l)?"":"🔒 "}${LV[l-1]} ×${MU[l-1]}</button>`).join("")}</div><p class="mu">${bp!=null?"Mejor precisión en este nivel: "+Math.round(bp*100)+"%":"Aún sin intentos en este nivel."}</p><button class="btn" onclick="start()">Comenzar sesión</button></div>
+<div class="card mu"><b style="color:var(--tx)">Cómo se puntúa</b><br>✅ Acierto: 10 pts (6 si usaste ayuda) + bonus de racha hasta +10<br>❌ Error: 2 pts de participación<br>🏆 Final: 100% = +30 · 80%+ = +15 · 60%+ = +5<br>⚡ Dificultad: Fácil ×1 · Medio ×1.5 · Difícil ×2 (multiplica todo). Con 60% o más desbloqueas el siguiente nivel.</div>`}
+function start(){const l=sh(all().filter(q=>(topic=="Todas"||q.t==topic)&&q.l==lv)).slice(0,8);
+if(!l.length){pop("No hay preguntas");return}
+ses={l,i:0,ok:0,n:0,pts:0,st:0,best:0,t:topic,lv,m:MU[lv-1]};nq();render()}
+function nq(){const q=ses.l[ses.i];ses.q=q;ses.o=sh([q.a,...q.w]);ses.hid=[];ses.hint=false;ses.done=false;ses.help=false;ses.pick=null}
+function quiz(){const q=ses.q;
+const wc=SHOP.filter(s=>s.w).map(s=>`<button ${(S.inv[s.id]>0&&!ses.done&&s.id!="shield")?"":"disabled"} onclick="use('${s.id}')">${s.e} ${s.n} ×${S.inv[s.id]||0}</button>`).join("");
+const sh2=S.inv.shield>0?`<span class="mu">🛡️ Escudo activo ×${S.inv.shield}</span>`:"";
+return `<div class="card"><div class="row sp mu"><span>${esc(ses.t)} · ${LV[ses.lv-1]} · ${ses.i+1}/${ses.l.length}</span><span>🔥 Racha ${ses.st} · +${ses.pts} pts</span></div>
+<h2 style="margin-top:10px">${esc(q.q)}</h2>
+<div class="wc">${wc}</div>${sh2}
+${ses.hint?`<div class="hint">💡 ${esc(q.h||"Sin pista para esta pregunta.")}</div>`:""}
+${ses.o.map((o,i)=>{let c="";if(ses.hid.includes(o))c="hide";if(ses.done){if(o==q.a)c="ok";else if(o==ses.pick)c="ko"}
+return `<button class="opt ${c}" ${ses.done?"disabled":""} onclick="ans(${i})">${esc(o)}</button>`}).join("")}
+${ses.done?`<div class="fb ${ses.pick==q.a?"ok":"ko"}">${ses.fb}</div><button class="btn" onclick="next()">${ses.i+1<ses.l.length?"Siguiente →":"Ver resultados"}</button>`:""}</div>`}
+function use(id){if(!(S.inv[id]>0)||ses.done)return;
+if(id=="fifty"){if(ses.hid.length)return;ses.hid=sh(ses.q.w).slice(0,2)}
+if(id=="hint"){if(ses.hint)return;ses.hint=true}
+if(id=="skip"){S.inv.skip--;save();ses.n=ses.n;next(true);return}
+S.inv[id]--;ses.help=true;save();render()}
+function ans(i){const o=ses.o[i],q=ses.q;ses.pick=o;ses.done=true;ses.n++;
+if(o==q.a){ses.ok++;ses.st++;ses.best=Math.max(ses.best,ses.st);
+const g=Math.round(((ses.help?6:10)+Math.min(ses.st-1,5)*2)*ses.m);ses.pts+=g;add(g);ses.fb="¡Correcto! +"+g+" pts"+(ses.st>1?" 🔥 racha x"+ses.st:"")}
+else{let m="Era: "+esc(q.a)+" · +2 pts";
+if(S.inv.shield>0){S.inv.shield--;m+=" · 🛡️ tu escudo salvó la racha"}else ses.st=0;
+ses.pts+=2;add(2);ses.fb=m}
+render()}
+function next(skip){ses.i++;if(ses.i>=ses.l.length){fin();return}nq();render()}
+function fin(){let b=0;const a=ses.n?ses.ok/ses.n:0;if(ses.n>0){if(a==1)b=30;else if(a>=.8)b=15;else if(a>=.6)b=5}
+b=Math.round(b*ses.m);add(b);const k=ses.t+"|"+ses.lv,u=a>=.6&&ses.lv<3&&ses.t!="Todas"&&(S.prog[k]||0)<.6;S.prog[k]=Math.max(S.prog[k]||0,a);save();const t=ses.pts+b,o=ses;ses=null;
+document.getElementById("v").innerHTML=`<div class="card"><div class="big">${a>=.8?"🏆":a>=.6?"👏":"💪"}</div><h2 style="text-align:center">¡Sesión terminada!</h2>
+<div class="sum"><div><b>${o.ok}/${o.n}</b>aciertos</div><div><b>${o.best}</b>mejor racha</div><div><b>+${b}</b>bonus final</div><div><b>+${t}</b>total</div></div>
+${u?'<p style="text-align:center">🔓 ¡Desbloqueaste el siguiente nivel!</p>':""}<div class="row" style="justify-content:center"><button class="btn" onclick="start()">Otra sesión</button><button class="btn sec" onclick="tab='t';render()">Ir a la tienda</button></div></div>`;head();if(b)pop("🏆 Bonus +"+b)}
+function shop(){return `<div class="card"><h2>Tienda</h2><p class="mu">Comodines para ayudarte en los ejercicios y objetos para personalizar tu perfil.</p>`+
+SHOP.map(s=>{const own=!s.w&&S.own.includes(s.id);
+const btn=s.w?`<button class="btn" ${S.pts<s.p?"disabled":""} onclick="buy('${s.id}')">⭐ ${s.p}</button>`:
+own?`<button class="btn sec" ${S.av==s.id?"disabled":""} onclick="S.av='${s.id}';save();render()">${S.av==s.id?"En uso":"Usar"}</button>`:
+`<button class="btn" ${S.pts<s.p?"disabled":""} onclick="buy('${s.id}')">⭐ ${s.p}</button>`;
+return `<div class="item"><div class="e">${s.e}</div><div class="i"><b>${s.n}</b>${s.w?` <span class="mu">(tienes ${S.inv[s.id]||0})</span>`:""}<div class="mu">${s.d}</div></div>${btn}</div>`}).join("")+`</div>`}
+function buy(id){const s=SHOP.find(x=>x.id==id);if(S.pts<s.p)return;add(-s.p);
+if(s.w)S.inv[id]=(S.inv[id]||0)+1;else{S.own.push(id);S.av=id}save();pop("¡Comprado! "+s.e);render()}
+function mine(){return `<div class="card"><h2>Agrega tus preguntas</h2><p class="mu">Crea tus propios ejercicios con los temas que estás estudiando.</p>
+<label>Tema</label><input id="nt" placeholder="Ej. Biología">
+<label>Dificultad</label><select id="nl"><option value="1">Fácil</option><option value="2">Medio</option><option value="3">Difícil</option></select><label>Pregunta</label><input id="nq" placeholder="Escribe la pregunta">
+<label>Respuesta correcta</label><input id="na">
+<label>Respuestas incorrectas (mínimo 1)</label><input id="w1"><input id="w2"><input id="w3">
+<label>Pista (opcional)</label><input id="nh">
+<button class="btn" onclick="addq()">Guardar pregunta</button></div>
+<div class="card"><h2>Mis preguntas (${S.custom.length})</h2>${S.custom.length?S.custom.map((q,i)=>`<div class="item"><div class="i"><b>${esc(q.q)}</b><div class="mu">${esc(q.t)} · ${esc(q.a)}</div></div><button class="btn sec" onclick="S.custom.splice(${i},1);save();render()">🗑️</button></div>`).join(""):'<p class="mu">Aún no has agregado ninguna.</p>'}</div>`}
+function addq(){const g=i=>document.getElementById(i).value.trim();
+const w=[g("w1"),g("w2"),g("w3")].filter(Boolean);
+if(!g("nq")||!g("na")||!w.length){pop("Completa pregunta, correcta y 1 incorrecta");return}
+S.custom.push({t:g("nt")||"Mis temas",l:+g("nl"),q:g("nq"),a:g("na"),w,h:g("nh")});save();pop("Pregunta guardada ✅");render()}
+render();
+</script></body></html>
